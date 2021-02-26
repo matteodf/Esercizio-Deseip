@@ -34,13 +34,16 @@
       </div>
     </div>
     <div class="container">
-      <div class="row" style="display:flex; margin:5% 5% 0 5%">
-        <div class="column" style="flex:35%">
+      <div class="row" style="margin:5% 5% 0 5%">
+        <div class="col-lg-1 visible-lg"></div>
+        <div class="col-lg-3 text-center">
           <h2 style="font-weight:600">Impianti usati</h2>  
         </div>
-        <div class="column" style="flex:65%; font-size: 0.9em">
+        <div class="col-xs-12 visible-xs visible-sm visible-md"><br></div>
+        <div class="col-lg-7 text-center" style="font-size: 0.9em">
           L’affidabilità di Priess consente di avere impianti già presenti sul mercato da anni ma ancora in ottimo stato. L’azienda è presente in Italia da molti anni ma, dal 2018, ha aperto ufficialmente la filiale commerciale italiana per consentire un contatto diretto con la Casa Madre. I macchinari usati consentono di poter sfruttare appieno la tecnologia Priess senza dover attendere i normali tempi di consegna.</div>
         </div>
+        <div class="col-lg-1 visible-lg"></div>
       </div>
     <div class="container">
       <?php echo create_cards($connect); ?>

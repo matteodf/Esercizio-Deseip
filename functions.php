@@ -61,14 +61,16 @@ function make_slides($connect)
   }
   $output .= '
   <img style="margin:-5% 0" src="assets/images/'.$row["banner_image"].'" alt="'.$row["banner_title"].'" />
-  <div class="carousel-caption caption-centered" style="top:15%; bottom:0; left:-20%">
-    <h1 style="font-weight:600; font-size:6rem;">'.$row["banner_title"].'</h1>
-  </div>
-  <div class="carousel-caption" style="top:20%; bottom:0; right:-20%;">
-    <p>'.$row["banner_text"].'</p>
-    <a href="'.$row["banner_link"].'" class="btn btn-primary" style="background-color:#FFFFFF00; color:white; border-color:white; font-weight:600; border-radius:100px">
-      Scopri di più
-    </a>
+  <div class="carousel-caption caption-centered" style="top:15%;">
+    <div class="col-lg-6">
+      <h1 style="font-weight:600; font-size:6rem;">'.$row["banner_title"].'</h1>
+    </div>
+    <div class="col-lg-6">
+      <p>'.$row["banner_text"].'</p>
+      <a href="'.$row["banner_link"].'" class="btn btn-primary" style="background-color:#FFFFFF00; color:white; border-color:white; font-weight:600; border-radius:100px">
+        Scopri di più
+      </a>
+    </div>
   </div>
   </div>
   ';
@@ -81,7 +83,8 @@ function make_slides($connect)
 function create_cards($connect){
 
   $output = '
-  <div class="row" style="display:flex; margin:5% 5% 0 5%">
+  <div class="row" style="margin:5% 5% 0 5%">
+    <div class="col-lg-1 visible-lg"></div>
   ';
   $count = 0;
   $count_col = 0;
@@ -91,15 +94,16 @@ function create_cards($connect){
     $count_col++;
     if ($count > 0 && $count % 5 == 0){
       $output.='
-      <div class="row" style="display:flex; margin:5% 5% 0 5%">
+      <div class="row" style="margin:5% 5% 0 5%">
+        <div class="col-lg-1 visible-lg"></div>
       ';
     }
 
     $output .= '
-    <div class="column" style="flex:20%; margin:0 5px 5px 5px">
-      <img src="assets/images/'.$row["image"].'" alt="'.$row["machine_code"].'" style="width:75%;"/>
+    <div class="col-lg-2 text-center">
+      <img src="assets/images/'.$row["image"].'" alt="'.$row["machine_code"].'" style="width:95%;"/>
       <p style="font-weight:600; padding-top:5px; margin-bottom:5px">'.$row["machine_code"].'</p>
-      <hr style="height:2px; width:8%; border-width:0; color:black; background-color:black; margin:0 0 5px 0;">
+      <hr style="height:2px; width:8%; border-width:0; color:black; background-color:black; margin:0 auto;">
       <p style="margin-bottom:5px">'.$row["machine_summary"].'</p>
       <a data-toggle="modal" href="#machine_'.$row["machine_id"].'" class="btn btn-primary" style="background-color:#FFFFFF00; color:#AB1D21; border-color:#AB1D21; font-weight:600; border-radius:100px">
         <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="40.435001" height="14.858" viewBox="0 0 40.435002 14.857999" version="1.1" id="svg6" sodipodi:docname="Group 75.svg" inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
@@ -122,10 +126,12 @@ function create_cards($connect){
         </svg>
       </a>
     </div>
+    <div class="col-xs-12 visible-xs visible-sm visible-md"><br></div>
     ';
 
     if ($count == 4 || $count == 9){
       $output.='
+        <div class="col-lg-1 visible-lg"></div>
       </div>
       ';
       $count_col = 0;
@@ -137,7 +143,7 @@ function create_cards($connect){
   if ($count % 5 != 0){
     for ($i=0; $i < 5 - $count_col; $i++){
       $output .= '
-      <div class="column" style="flex:20%; margin:0 5px 5px 5px">
+      <div class="col-lg-2">
       </div>
       ';
     };
@@ -156,11 +162,11 @@ function create_popups($connect){
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <div class="row" style="display:flex;margin:2% 0 0 0">
-              <div class="column" style="flex:20%">
+            <div class="row" style="margin:2% 0 0 0">
+              <div class="col-lg-8">
                 <h4 class="modal-title"><span style="font-weight:600">'.$row["machine_code"].'</span> - '.$row["machine_type"].'</h4>
               </div>
-              <div class="column" style="flex:20%"> 
+              <div class="col-lg-4"> 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               </div>
             </div>
@@ -169,18 +175,18 @@ function create_popups($connect){
             <div style="text-align:center">
               <img src="assets/images/'.$row["image"].'" alt="'.$row["machine_code"].'" style="width:100%;"/>
             </div>
-            <div class="row" style="display:flex; margin:5% 5% 0 5%">
-              <div class="column" style="flex:20%; margin:0 5px 5px 5px; padding-right:15px">
+            <div class="row" style="margin:5% 5% 0 5%">
+              <div class="col-lg-4">
                 <p style="font-size: 1.3em; margin-bottom:5px">'.$row["machine_summary"].'</p>
               </div>
-              <div class="column" style="flex:20%; margin:0 5px 5px 5px">
+              <div class="col-lg-4">
                 <p style="padding-top:5px; margin-bottom:5px"><span style="font-weight:600">Descrizione: </span>'.$row["machine_description"].'</p>
                 <p style="padding-top:5px; margin-bottom:5px"><span style="font-weight:600">Lati foratura: </span>'.$row["lati_foratura"].'</p>
                 <p style="padding-top:5px; margin-bottom:5px"><span style="font-weight:600">Num. mandrini: </span>'.$row["num_mandrini"].'</p>
                 <p style="padding-top:5px; margin-bottom:5px"><span style="font-weight:600">Cambio utensili: </span>'.$row["cambio_utensili"].'</p>
                 <p style="padding-top:5px; margin-bottom:5px"><span style="font-weight:600">Pantografo: </span>'.$row["pantografo"].'</p>
               </div>
-              <div class="column" style="flex:20%; margin:0 5px 5px 5px">
+              <div class="col-lg-4">
                 <p style="padding-top:5px; margin-bottom:15px"><span style="font-weight:600">Gruppi: </span>'.$row["gruppi"].'</p>
                 <a href="" class="btn btn-primary" style="background-color:#FFFFFF00; color:#AB1D21; border-color:#AB1D21; font-weight:600; border-radius:100px; margin-bottom:15px">
                   Contattaci
